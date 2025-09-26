@@ -5,18 +5,33 @@ import { Badge } from '@/components/ui/badge';
 const Skills = () => {
   const skillCategories = [
     {
-      title: 'Frontend',
-      skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Three.js'],
+      title: 'Programming & Development',
+      skills: ['Python', 'JavaScript', 'HTML/CSS', 'Django', 'FastAPI', 'NumPy', 'Pandas', 'scikit-learn', 'Hugging Face', 'API Development', 'Full-Stack Integration'],
       color: 'bg-primary/20 text-primary border-primary/20'
     },
     {
-      title: 'Backend',
-      skills: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB', 'GraphQL', 'REST APIs'],
+      title: 'AI & Data Science',
+      skills: ['Machine Learning', 'Deep Learning', 'NLP', 'Feature Engineering', 'Predictive Modeling', 'ML Pipeline', 'Data Analytics', 'Data Visualization', 'Statistical Analysis'],
       color: 'bg-accent/20 text-accent border-accent/20'
     },
     {
-      title: 'Tools & DevOps',
-      skills: ['Git', 'Docker', 'AWS', 'Vercel', 'Figma', 'VS Code'],
+      title: 'Automation & Workflow',
+      skills: ['n8n Automation', 'Make (Integromat)', 'Notion Integration', 'GHL Automation', 'Business Workflow', 'Reporting Automation'],
+      color: 'bg-green-500/20 text-green-500 border-green-500/20'
+    },
+    {
+      title: 'Data & BI Tools',
+      skills: ['Power BI', 'Excel', 'Data Cleaning', 'Data Preprocessing', 'Dashboard Development', 'Insight Generation'],
+      color: 'bg-blue-500/20 text-blue-500 border-blue-500/20'
+    },
+    {
+      title: 'Deployment & DevOps',
+      skills: ['Docker', 'API Deployment', 'Model Serving', 'Scalable System Design'],
+      color: 'bg-orange-500/20 text-orange-500 border-orange-500/20'
+    },
+    {
+      title: 'Other Technical Skills',
+      skills: ['Web Scraping', 'Data Extraction', 'CRM Systems', 'Research', 'Independent Project Execution'],
       color: 'bg-muted-foreground/20 text-muted-foreground border-muted-foreground/20'
     }
   ];
@@ -36,7 +51,7 @@ const Skills = () => {
             Skills & Expertise
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
-            A comprehensive toolkit for building modern, scalable applications
+            A comprehensive toolkit for building modern, scalable applications and AI solutions
           </p>
         </div>
 

@@ -1,16 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 const Contact = () => {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.MouseEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted');
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const serviceID = 'service_4cnr86b';
+      const templateID = 'template_xwxu4dl';
+      const publicKey = 'K05BvZOQVjBKcp5n7';
+
+      const emailjs = await import('@emailjs/browser');
+      
+      const templateParams = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_name: 'Muhammad Uzair'
+      };
+
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
+      
+      setSubmitStatus('success');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -78,7 +127,6 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* CTA */}
             <Card className="p-6 card-gradient border-border glow-primary">
               <div className="text-center">
                 <h4 className="font-space font-semibold text-lg mb-2">
@@ -87,23 +135,41 @@ const Contact = () => {
                 <p className="text-muted-foreground text-sm mb-4">
                   Let's discuss how we can bring your ideas to life
                 </p>
-                <Button variant="hero" className="w-full">
-                  Schedule a Call
+                <Button variant="hero" className="w-full" asChild>
+                  <a href="tel:+923169919319">
+                    <Phone className="w-4 h-4" />
+                    Schedule a Call
+                  </a>
                 </Button>
               </div>
             </Card>
           </div>
 
-          {/* Contact Form */}
           <Card className="p-8 card-gradient border-border glow-hover">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-6">
+              {submitStatus === 'success' && (
+                <div className="flex items-center gap-2 p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-green-500 font-medium">Message sent successfully!</span>
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="flex items-center gap-2 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+                  <AlertCircle className="w-5 h-5 text-red-500" />
+                  <span className="text-red-500 font-medium">Failed to send message. Please try again.</span>
+                </div>
+              )}
+
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="firstName" className="font-medium">First Name</Label>
                   <Input 
                     id="firstName"
-                    placeholder="Muhammad"
+                    placeholder="First Name"
                     className="bg-background/50 border-border focus:border-primary"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
                     required
                   />
                 </div>
@@ -111,8 +177,10 @@ const Contact = () => {
                   <Label htmlFor="lastName" className="font-medium">Last Name</Label>
                   <Input 
                     id="lastName"
-                    placeholder="Uzair"
+                    placeholder="Last Name"
                     className="bg-background/50 border-border focus:border-primary"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
                     required
                   />
                 </div>
@@ -123,8 +191,10 @@ const Contact = () => {
                 <Input 
                   id="email"
                   type="email"
-                  placeholder="Muhammad.Uzair@example.com"
+                  placeholder="user@example.com"
                   className="bg-background/50 border-border focus:border-primary"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   required
                 />
               </div>
@@ -135,6 +205,8 @@ const Contact = () => {
                   id="subject"
                   placeholder="Let's work together"
                   className="bg-background/50 border-border focus:border-primary"
+                  value={formData.subject}
+                  onChange={handleInputChange}
                   required
                 />
               </div>
@@ -146,20 +218,33 @@ const Contact = () => {
                   placeholder="Tell me about your project..."
                   rows={5}
                   className="bg-background/50 border-border focus:border-primary resize-none"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   required
                 />
               </div>
 
               <Button 
-                type="submit" 
+                type="button" 
                 variant="hero" 
                 className="w-full"
                 size="lg"
+                disabled={isSubmitting}
+                onClick={handleSubmit}
               >
-                <Send className="w-4 h-4" />
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    Send Message
+                  </>
+                )}
               </Button>
-            </form>
+            </div>
           </Card>
         </div>
       </div>
