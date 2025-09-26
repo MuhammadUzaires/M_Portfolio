@@ -30,9 +30,9 @@ const Contact = () => {
     setSubmitStatus('idle');
 
     try {
-      const serviceID = 'service_4cnr86b';
-      const templateID = 'template_xwxu4dl';
-      const publicKey = 'K05BvZOQVjBKcp5n7';
+      const serviceID = 'service_45u8zne';
+      const templateID = 'template_l96y4z8';
+      const publicKey = 'lC_Xw8Ts-Xj5NZyeK';
 
       const emailjs = await import('@emailjs/browser');
       
