@@ -1,0 +1,170 @@
+import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { Mail, MapPin, Phone, Send } from 'lucide-react';
+
+const Contact = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted');
+  };
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      label: 'Email',
+      value: 'muhammaduzaires@gmail.com',
+      href: 'mailto:muhammaduzaires@gmail.com'
+    },
+    {
+      icon: Phone,
+      label: 'Phone',
+      value: '+923169919319',
+      href: 'tel:+923169919319'
+    },
+    {
+      icon: MapPin,
+      label: 'Location',
+      value: 'Street Pakistan Masjid, Post Office Gujrat, District Mardan, Province KPK',
+      href: '#'
+    }
+  ];
+
+  return (
+    <section id="contact" className="py-20 px-4 bg-secondary/30">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="font-space font-bold text-4xl sm:text-5xl mb-6 text-gradient">
+            Let's Work Together
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
+            Have a project in mind? I'd love to hear about it. Let's create something amazing together.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Contact Information */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="font-space font-semibold text-2xl mb-4">
+                Get In Touch
+              </h3>
+              <p className="text-muted-foreground mb-8">
+                I'm always open to discussing new opportunities, creative projects, 
+                or potential collaborations. Drop me a line and let's start a conversation.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {contactInfo.map((item, index) => (
+                <Card key={index} className="p-4 card-gradient border-border glow-hover transition-all hover:scale-[1.02]">
+                  <a 
+                    href={item.href} 
+                    className="flex items-center gap-4 text-inherit hover:text-primary transition-colors"
+                  >
+                    <div className="p-3 rounded-lg bg-primary/10 glow-primary">
+                      <item.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold font-space">{item.label}</div>
+                      <div className="text-muted-foreground text-sm">{item.value}</div>
+                    </div>
+                  </a>
+                </Card>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <Card className="p-6 card-gradient border-border glow-primary">
+              <div className="text-center">
+                <h4 className="font-space font-semibold text-lg mb-2">
+                  Ready to Start Your Project?
+                </h4>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Let's discuss how we can bring your ideas to life
+                </p>
+                <Button variant="hero" className="w-full">
+                  Schedule a Call
+                </Button>
+              </div>
+            </Card>
+          </div>
+
+          {/* Contact Form */}
+          <Card className="p-8 card-gradient border-border glow-hover">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="firstName" className="font-medium">First Name</Label>
+                  <Input 
+                    id="firstName"
+                    placeholder="Muhammad"
+                    className="bg-background/50 border-border focus:border-primary"
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="lastName" className="font-medium">Last Name</Label>
+                  <Input 
+                    id="lastName"
+                    placeholder="Uzair"
+                    className="bg-background/50 border-border focus:border-primary"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="email" className="font-medium">Email</Label>
+                <Input 
+                  id="email"
+                  type="email"
+                  placeholder="Muhammad.Uzair@example.com"
+                  className="bg-background/50 border-border focus:border-primary"
+                  required
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="subject" className="font-medium">Subject</Label>
+                <Input 
+                  id="subject"
+                  placeholder="Let's work together"
+                  className="bg-background/50 border-border focus:border-primary"
+                  required
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="message" className="font-medium">Message</Label>
+                <Textarea 
+                  id="message"
+                  placeholder="Tell me about your project..."
+                  rows={5}
+                  className="bg-background/50 border-border focus:border-primary resize-none"
+                  required
+                />
+              </div>
+
+              <Button 
+                type="submit" 
+                variant="hero" 
+                className="w-full"
+                size="lg"
+              >
+                <Send className="w-4 h-4" />
+                Send Message
+              </Button>
+            </form>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
