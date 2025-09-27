@@ -35,7 +35,7 @@ const Footer = () => {
               Muhammad Uzair
             </div>
             <p className="text-muted-foreground text-sm max-w-sm">
-              Creating beautiful digital experiences through innovative design and clean code.
+              Building intelligent systems that transform data into actionable insights.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((link, index) => (
