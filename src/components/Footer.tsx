@@ -7,7 +7,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Github, href: '#', label: 'GitHub' },
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:hello@yourname.com', label: 'Email' }
+    { icon: Mail, href: 'mailto:muhammaduzair22003@gmail.com', label: 'Email' }
   ];
 
   const navLinks = [
@@ -32,7 +32,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="font-space font-bold text-2xl text-gradient">
-              Portfolio
+              Muhammad Uzair
             </div>
             <p className="text-muted-foreground text-sm max-w-sm">
               Creating beautiful digital experiences through innovative design and clean code.
@@ -87,7 +87,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} Your Name. All rights reserved.
+            © {currentYear} Muhammad Uzair . All rights reserved.
           </p>
           <p className="text-muted-foreground text-sm flex items-center gap-1">
             Made with <Heart className="w-4 h-4 text-primary" /> and lots of coffee
