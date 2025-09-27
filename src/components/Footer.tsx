@@ -75,10 +75,10 @@ const Footer = () => {
                 Ready to bring your next project to life?
               </p>
               <a 
-                href="mailto:hello@yourname.com"
+                href="mailto:muhammaduzair22003@gmail.com"
                 className="text-primary hover:text-primary-glow transition-colors"
               >
-                hello@yourname.com
+                muhammaduzair22003@gmail.com
               </a>
             </div>
           </div>
