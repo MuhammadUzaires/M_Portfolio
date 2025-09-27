@@ -1,23 +1,23 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
-import { Code, Palette, Rocket } from 'lucide-react';
+import { Brain, Database, Zap } from 'lucide-react';
 
 const About = () => {
   const features = [
     {
-      icon: Code,
-      title: 'Clean Code',
-      description: 'Writing maintainable, scalable code that stands the test of time'
+      icon: Brain,
+      title: 'AI & Machine Learning',
+      description: 'Specializing in ML, Deep Learning, NLP, and Data Science to transform complex data into actionable insights'
     },
     {
-      icon: Palette,
-      title: 'Creative Design',
-      description: 'Blending aesthetics with functionality for exceptional user experiences'
+      icon: Database,
+      title: 'Full-Stack Development',
+      description: 'Building end-to-end applications with Django, FastAPI, and modern frameworks for scalable solutions'
     },
     {
-      icon: Rocket,
-      title: 'Performance',
-      description: 'Optimizing every detail for lightning-fast, responsive applications'
+      icon: Zap,
+      title: 'Automation & Integration',
+      description: 'Creating intelligent workflows with n8n, Make, Notion integrations, and business automation platforms'
     }
   ];
 
@@ -29,31 +29,34 @@ const About = () => {
             About Me
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-inter">
-            I'm a passionate developer who loves creating digital experiences that make a difference. 
-            With a keen eye for design and a strong foundation in modern technologies, I bring ideas to life 
-            through elegant code and innovative solutions.
+            I'm Muhammad Uzair — a Computer Science professional, AI Developer, and problem-solver 
+            passionate about building intelligent systems and automation that make an impact.
           </p>
         </div>
-
+        
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="space-y-6">
             <h3 className="font-space font-semibold text-2xl sm:text-3xl">
-              Turning Vision Into Reality
+              Innovation Meets Execution
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              With over 5 years of experience in web development, I specialize in creating 
-              high-performance applications using modern frameworks and tools. My approach 
-              combines technical excellence with creative problem-solving to deliver 
-              exceptional results.
+              With a strong foundation in <span className="text-primary font-medium">Machine Learning, Deep Learning, NLP, and Data Science</span>, 
+              I specialize in turning complex data into actionable insights and scalable solutions. My work bridges the gap between 
+              data-driven intelligence and practical business workflows.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              When I'm not coding, you can find me exploring new technologies, contributing 
-              to open-source projects, or sharing knowledge with the developer community. 
-              I believe in continuous learning and staying ahead of industry trends.
+              Beyond AI, I craft seamless <span className="text-primary font-medium">end-to-end applications</span> by combining 
+              backend frameworks like <span className="text-primary font-medium">Django and FastAPI</span> with modern automation 
+              platforms such as <span className="text-primary font-medium">n8n, Make, and Notion integrations</span>.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              From <span className="text-primary font-medium">resume screening systems powered by BERT</span> to 
+              <span className="text-primary font-medium"> workflow automations connecting GHL, Power BI, and CRMs</span>, 
+              I thrive at transforming ideas into reality through clean code, elegant design, and efficient automation.
             </p>
           </div>
-
+          
           {/* Features Grid */}
           <div className="grid gap-6">
             {features.map((feature, index) => (
